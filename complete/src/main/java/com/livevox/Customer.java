@@ -1,8 +1,16 @@
-package hello;
+package com.livevox;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonAutoDetect
 public class Customer {
+	@JsonProperty
     private long id;
-    private String firstName, lastName;
+	@JsonProperty
+    private String firstName;
+    @JsonProperty
+    private String lastName;
 
     public Customer(long id, String firstName, String lastName) {
         this.id = id;
