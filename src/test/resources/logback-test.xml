@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>build/log/test.log</file>
+        <append>false</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%date %level %thread %logger - %message%n</Pattern>
+        </encoder>
+    </appender>
+    <logger name="com.livevox" level="TRACE" />
+
+    <root level="WARN">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
