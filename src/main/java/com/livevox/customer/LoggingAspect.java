@@ -8,13 +8,14 @@ import org.slf4j.LoggerFactory;
 
 @Aspect
 public class LoggingAspect {
-    private static final Logger LOG = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution(* com.livevox.customer.CustomerController.*(..))")
+    @Around("execution(* com.livevox.customer.CustomerServiceImpl.*(..))")
     public Object logCall(ProceedingJoinPoint pjp) throws Throwable {
-        LOG.debug("before call");
+        Logger log = LoggerFactory.getLogger(pjp.getTarget().getClass());
+        String target = pjp.getSignature().getName();
+        log.debug("before {} call", target);
         Object obj = pjp.proceed();
-        LOG.debug("after call");
+        log.debug("after {} call", target);
         return obj;
     }
 }
